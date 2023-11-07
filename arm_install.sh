@@ -43,6 +43,19 @@ sudo rpm --import https://downloads.1password.com/linux/keys/1password.asc
 sudo sh -c 'echo -e "[1password]\nname=1Password Stable Channel\nbaseurl=https://downloads.1password.com/linux/rpm/stable/\$basearch\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=\"https://downloads.1password.com/linux/keys/1password.asc\"" > /etc/yum.repos.d/1password.repo'
 sudo dnf check-update -y 1password-cli && sudo dnf install 1password-cli
 
+# installing Zulip ARM
+git clone https://github.com/zulip/zulip-desktop
+cd zulip-desktop
+npm install
+npx vite build
+npx electron-builder --linux tar.gz
+cd dist
+sudo tar -xf Zulip-*.*.*-arm64.tar.gz
+sudo mkdir -p /opt/Zulip
+sudo mv Zulip-*/* /opt/Zulip
+sudo ln -sf /opt/Zulip/zulip /usr/bin/zulip
+sudo rm -r -f ~/.dotfiles_fedora/zulip-desktop
+
 # installing pip
 curl https://bootstrap.pypa.io/get-pip.py >> "get-pip.py"
 python get-pip.py
