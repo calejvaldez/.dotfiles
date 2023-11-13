@@ -5,7 +5,7 @@ sudo dnf install firefox
 sudo dnf install snapd
 sudo ln -s /var/lib/snapd/snap /snap
 
-sudo rpm --install "https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-amd64" # vscode
+sudo rpm --install "https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-x64" # vscode
 sudo rpm --install "https://downloads.1password.com/linux/rpm/stable/x86_64/1password-latest.rpm" # 1password
 sudo rpm --install "https://download.sublimetext.com/sublime-text-4152-1.x86_64.rpm" # sublime text
 
