@@ -15,7 +15,7 @@ sudo dnf5 install firefox
 sudo dnf5 install snapd
 
 sudo ln -s /var/lib/snapd/snap /snap
-sudo ln -sf "$HOME/.dotfiles-fedora/.gitconfig" "$HOME/.gitconfig"
+sudo ln -sf "$PWD/.gitconfig" "$HOME/.gitconfig"
 
 # Check to see if we're on aarch64 or x86_64
 if [[ $ARCHITECTURE == "aarch64" ]]; then
