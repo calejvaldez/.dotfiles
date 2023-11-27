@@ -17,6 +17,9 @@ sudo dnf5 install snapd
 sudo ln -s /var/lib/snapd/snap /snap
 sudo ln -sf "$PWD/.gitconfig" "$HOME/.gitconfig"
 
+mkdir -p "$HOME/.config/1Password/ssh/"
+sudo ln -sf "$PWD/1Password/agent.toml" "$HOME/.config/1Password/ssh/agent.toml"
+
 # Check to see if we're on aarch64 or x86_64
 if [[ $ARCHITECTURE == "aarch64" ]]; then
     sudo rpm --install "https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-arm64"
