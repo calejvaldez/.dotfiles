@@ -56,7 +56,6 @@ sudo snap install todoist
 sudo dnf5 install bash
 sudo dnf5 install git
 sudo dnf5 install python
-sudo dnf5 install git-filter-repo
 sudo dnf5 install lynx
 sudo dnf5 install neofetch
 sudo dnf5 install nodejs
