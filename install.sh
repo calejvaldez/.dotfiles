@@ -56,6 +56,7 @@ sudo snap install discord
 sudo snap install todoist
 
 # dev packages
+sudo dnf5 install vim
 sudo dnf5 install bash
 sudo dnf5 install git
 sudo dnf5 install python
