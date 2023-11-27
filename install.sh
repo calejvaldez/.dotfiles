@@ -10,8 +10,9 @@ sudo -v
 ARCHITECTURE="$(uname -m)"
 echo "$ARCHITECTURE architecture detected."
 
-sudo dnf install firefox
-sudo dnf install snapd
+sudo dnf install dnf5
+sudo dnf5 install firefox
+sudo dnf5 install snapd
 sudo ln -s /var/lib/snapd/snap /snap
 
 # Check to see if we're on aarch64 or x86_64
@@ -42,7 +43,7 @@ fi
 # installing 1Password CLI
 sudo rpm --import https://downloads.1password.com/linux/keys/1password.asc
 sudo sh -c 'echo -e "[1password]\nname=1Password Stable Channel\nbaseurl=https://downloads.1password.com/linux/rpm/stable/\$basearch\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=\"https://downloads.1password.com/linux/keys/1password.asc\"" > /etc/yum.repos.d/1password.repo'
-sudo dnf check-update -y 1password-cli && sudo dnf install 1password-cli
+sudo dnf5 check-update -y 1password-cli && sudo dnf install 1password-cli
 
 sudo snap install spotify
 sudo snap install zulip
@@ -50,13 +51,13 @@ sudo snap install discord
 sudo snap install todoist
 
 # dev packages
-sudo dnf install bash
-sudo dnf install git
-sudo dnf install python
-sudo dnf install git-filter-repo
-sudo dnf install lynx
-sudo dnf install neofetch
-sudo dnf install nodejs
+sudo dnf5 install bash
+sudo dnf5 install git
+sudo dnf5 install python
+sudo dnf5 install git-filter-repo
+sudo dnf5 install lynx
+sudo dnf5 install neofetch
+sudo dnf5 install nodejs
 sudo npm install -g yarn
 sudo npm install -g sass
 
