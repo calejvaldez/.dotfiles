@@ -27,7 +27,7 @@ if [[ $ARCHITECTURE == "aarch64" ]]; then
     sudo mkdir -p /opt/1Password
     sudo mv 1password-*/* /opt/1Password
     sudo /opt/1Password/after-install.sh
-    sudo rm -r -f 1password-latest.tar.gz
+    sudo rm -r -f 1password*
 
     # no Sublime for ARM yet
     
