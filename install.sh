@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
+
+# install.sh
+# Carlos Valdez
+# 
+# This is my software installer for the Fedora Workstation OS.
+
 sudo -v
 
 ARCHITECTURE="$(uname -m)"
