@@ -1,13 +1,37 @@
 #!/usr/bin/env bash
 sudo -v
 
+ARCHITECTURE="$(uname -m)"
+echo "$ARCHITECTURE architecture detected."
+
 sudo dnf install firefox
 sudo dnf install snapd
 sudo ln -s /var/lib/snapd/snap /snap
 
-sudo rpm --install "https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-x64" # vscode
-sudo rpm --install "https://downloads.1password.com/linux/rpm/stable/x86_64/1password-latest.rpm" # 1password
-sudo rpm --install "https://download.sublimetext.com/sublime-text-4152-1.x86_64.rpm" # sublime text
+# Check to see if we're on aarch64 or x86_64
+if [[ $ARCHITECTURE == "aarch64" ]]; then
+    sudo rpm --install "https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-arm64"
+
+    # installing 1Password ARM
+    curl -sSO https://downloads.1password.com/linux/tar/stable/aarch64/1password-latest.tar.gz
+    sudo tar -xf 1password-latest.tar.gz
+    sudo mkdir -p /opt/1Password
+    sudo mv 1password-*/* /opt/1Password
+    sudo /opt/1Password/after-install.sh
+    sudo rm -r -f 1password-latest.tar.gz
+
+    # no Sublime for ARM yet
+    
+elif [[ $ARCHITECTURE == "x86_64" ]]; then
+    sudo rpm --install "https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-x64"
+    sudo rpm --install "https://downloads.1password.com/linux/rpm/stable/x86_64/1password-latest.rpm"
+    sudo rpm --install "https://download.sublimetext.com/sublime-text-4152-1.x86_64.rpm"
+else
+    echo "This installer has not implemented this architecture yet ($ARCHITECTURE). Goodbye."
+    exit 1
+fi
+
+
 
 # installing 1Password CLI
 sudo rpm --import https://downloads.1password.com/linux/keys/1password.asc
