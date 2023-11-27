@@ -55,6 +55,9 @@ sudo snap install zulip
 sudo snap install discord
 sudo snap install todoist
 
+# NordVPN
+sh <(curl -sSf https://downloads.nordcdn.com/apps/linux/install.sh)
+
 # dev packages
 sudo dnf5 install vim
 sudo dnf5 install gh
