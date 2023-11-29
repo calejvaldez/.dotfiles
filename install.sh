@@ -8,11 +8,19 @@
 sudo -v
 
 ARCHITECTURE="$(uname -m)"
+DE="$XDG_CURRENT_DESKTOP"
 echo "$ARCHITECTURE architecture detected."
+echo "$DE desktop environment detected."
 
 sudo dnf install dnf5
 sudo dnf5 install firefox
 sudo dnf5 install snapd
+
+if [[ $DE == "GNOME" ]]; then
+    dconf load -f / < gnome-settings.ini
+else
+    echo "DE not set to 'GNOME'. Not importing settings..."
+fi
 
 sudo ln -s /var/lib/snapd/snap /snap
 sudo ln -sf "$PWD/.gitconfig" "$HOME/.gitconfig"
