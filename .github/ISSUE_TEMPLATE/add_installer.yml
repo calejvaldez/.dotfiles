@@ -1,0 +1,16 @@
+name: Add App Installer
+description: Add a new app to automatically install.
+title: Add [INSERT APP NAME]
+labels: ["enhancement"]
+assignees:
+  - calejvaldez
+body:
+  - type: textarea
+    id: url
+    attributes:
+      label: App URL
+      description: Please add the app URL.
+      placeholder: https://code.visualstudio.com/
+    validations:
+      required: true
+
