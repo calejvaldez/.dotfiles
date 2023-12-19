@@ -13,6 +13,11 @@ echo "$ARCHITECTURE architecture detected."
 echo "$DE desktop environment detected."
 
 sudo dnf install dnf5
+
+echo "Running updates..."
+sudo dnf5 --refresh update
+sudo dnf5 --refresh upgrade
+
 sudo dnf5 install firefox
 sudo dnf5 install snapd
 
@@ -77,6 +82,10 @@ sudo dnf5 install neofetch
 sudo dnf5 install nodejs
 sudo npm install -g yarn
 sudo npm install -g sass
+
+# flatpaks
+flatpak install flathub it.mijorus.gearlever
+flatpak run it.mijorus.gearlever
 
 
 # installing pip
