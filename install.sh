@@ -84,6 +84,10 @@ sudo npm install -g yarn
 sudo npm install -g sass
 
 # flatpaks
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+
+echo "flathub remote added!"
+
 flatpak install flathub it.mijorus.gearlever
 flatpak run it.mijorus.gearlever
 
