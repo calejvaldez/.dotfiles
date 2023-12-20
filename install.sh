@@ -73,6 +73,7 @@ sudo snap install todoist
 sh <(curl -sSf https://downloads.nordcdn.com/apps/linux/install.sh)
 
 # dev packages
+sudo dnf5 install zsh
 sudo dnf5 install vim
 sudo dnf5 install gh
 sudo dnf5 install bash
@@ -139,3 +140,7 @@ then
     code --force --install-extension  "vscjava.vscode-maven"
     code --force --install-extension  "wmanth.jar-viewer"
 fi
+
+chsh -s "$(which zsh)"
+echo "System rebooting!"
+reboot
