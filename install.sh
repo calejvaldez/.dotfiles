@@ -27,7 +27,7 @@ else
     echo "DE not set to 'GNOME'. Not importing settings..."
 fi
 
-sudo ln -s /var/lib/snapd/snap /snap
+sudo ln -sf /var/lib/snapd/snap /snap
 sudo ln -sf "$PWD/.gitconfig" "$HOME/.gitconfig"
 
 mkdir -p "$HOME/.config/1Password/ssh/"
@@ -40,8 +40,9 @@ if [[ $ARCHITECTURE == "aarch64" ]]; then
     # installing 1Password ARM
     curl -sSO https://downloads.1password.com/linux/tar/stable/aarch64/1password-latest.tar.gz
     sudo tar -xf 1password-latest.tar.gz
+    sudo rm -rf /opt/1Password/
     sudo mkdir -p /opt/1Password
-    sudo mv 1password-*/* /opt/1Password
+    sudo mv -f 1password-*/* /opt/1Password
     sudo /opt/1Password/after-install.sh
     sudo rm -r -f 1password*
 
