@@ -12,7 +12,7 @@ git clone https://github.com/calejvaldez/.dotfiles/
 cd .dotfiles
 
 # using the install file
-sudo bash ./install.sh
+bash ./install.sh
 ```
 
 This will install the programs I usually use, as well as [Visual Studio Code](https://code.visualstudio.com/) extensions that I use.
