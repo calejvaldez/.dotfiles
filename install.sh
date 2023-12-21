@@ -16,15 +16,17 @@ echo "$ARCHITECTURE architecture detected."
 echo "$DE desktop environment detected."
 
 function commonInstall() {
-    sudo ln -sf "$PWD/.gitconfig" "$HOME/.gitconfig"
-
     # installing pip
     curl https://bootstrap.pypa.io/get-pip.py >> "get-pip.py"
 
+    printf "\n[gpg \"ssh\"]\n" >> .gitconfig
+
     if [[ $OS == "Darwin" ]]; then
         python3 get-pip.py
+        printf "\tprogram = /Applications/1Password.app/Contents/MacOS/op-ssh-sign" >> .gitconfig
     else
         python get-pip.py
+        printf "\tprogram = /opt/1Password/op-ssh-sign" >> .gitconfig
     fi
     
     rm get-pip.py

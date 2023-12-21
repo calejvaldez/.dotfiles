@@ -1,7 +1,6 @@
+# note: [gpg "ssh"] key will be added below by install.sh
 [gpg]
 	format = ssh
-[gpg "ssh"]
-	program = /opt/1Password/op-ssh-sign
 [commit]
 	gpgsign = true
 [user]
