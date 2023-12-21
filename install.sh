@@ -144,11 +144,44 @@ function setupFedora () {
     flatpak install flathub it.mijorus.gearlever
 
     chsh -s "$(which zsh)"
+
+    commonInstall
+}
+
+function setupMac() {
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+    brew install --cask firefox
+    brew install --cask 1password
+    brew install --cask visual-studio-code
+    brew install --cask sublime-text
+    brew install --cask 1password-cli
+    brew install --cask spotify
+    brew install --cask zulip
+    brew install --cask discord
+    brew install --cask todoist
+    brew install --cask nordvpn
+    brew install vim
+    brew install bash
+    brew install git
+    brew install lynx
+    brew install neofetch
+    brew install node
+    brew install mas
+    sudo npm install -g yarn
+    sudo npm install -g sass
+
+    echo "Running updates..."
+    sudo softwareupdate -ia --verbose
+    mas upgrade
+
+    commonInstall
 }
 
 if [[ $OS == "Linux" ]]; then
     setupFedora
-    commonInstall
+elif [[ $OS == "Darwin" ]]; then
+    setupMac
 else
     echo "This operating system is not supported. Only Linux and macOS (soon) are supported."
     exit 1
