@@ -20,7 +20,13 @@ function commonInstall() {
 
     # installing pip
     curl https://bootstrap.pypa.io/get-pip.py >> "get-pip.py"
-    python get-pip.py
+
+    if [[ $OS == "Darwin" ]]; then
+        python3 get-pip.py
+    else
+        python get-pip.py
+    fi
+    
     rm get-pip.py
 
     # vs code
@@ -161,6 +167,8 @@ function setupMac() {
     brew install --cask discord
     brew install --cask todoist
     brew install --cask nordvpn
+    brew install --cask mitmproxy
+    brew install python@3.11
     brew install vim
     brew install bash
     brew install git
@@ -183,7 +191,7 @@ if [[ $OS == "Linux" ]]; then
 elif [[ $OS == "Darwin" ]]; then
     setupMac
 else
-    echo "This operating system is not supported. Only Linux and macOS (soon) are supported."
+    echo "This operating system is not supported. Only Linux and macOS are supported."
     exit 1
 fi
 
