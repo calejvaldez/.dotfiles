@@ -83,7 +83,7 @@ function setupFedora () {
     sudo dnf5 install snapd
 
     if [[ $DE == "GNOME" ]]; then
-        dconf load -f / < gnome-settings.ini
+        dconf load -f / < "$PWD/GNOME/gnome-settings.ini"
     else
         echo "DE not set to 'GNOME'. Not importing settings..."
     fi
