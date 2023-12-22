@@ -29,6 +29,7 @@ function commonInstall() {
         printf "\tprogram = /opt/1Password/op-ssh-sign" >> .gitconfig
     fi
     
+    sudo ln -sf "$PWD/.gitconfig" "$HOME/.gitconfig"
     rm get-pip.py
 
     # vs code
