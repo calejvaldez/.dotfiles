@@ -4,16 +4,22 @@
 # Carlos Valdez
 # 
 # This is my software installer for the Fedora Workstation OS.
+# 
+# Key:
+# ✅ - Success
+# 👋🏽 - Attention
+# 💢 - Something failed
 
+printf "👋🏽 Asking for sudo permissions...\n"
 sudo -v
 
 # noting down info...
 OS="$(uname -s)"
 ARCHITECTURE="$(uname -m)"
 DE="$XDG_CURRENT_DESKTOP"
-echo "$OS operating system detected."
-echo "$ARCHITECTURE architecture detected."
-echo "$DE desktop environment detected."
+echo "✅ $OS operating system detected."
+echo "✅ $ARCHITECTURE architecture detected."
+echo "✅ $DE desktop environment detected."
 
 function commonInstall() {
     # installing pip
@@ -77,7 +83,7 @@ function commonInstall() {
 function setupFedora () {
     sudo dnf install dnf5
 
-    echo "Running updates..."
+    echo "👋🏽 Running updates..."
     sudo dnf5 --refresh update
     sudo dnf5 --refresh upgrade
     sudo dnf5 install firefox
@@ -86,7 +92,7 @@ function setupFedora () {
     if [[ $DE == "GNOME" ]]; then
         dconf load -f / < "$PWD/GNOME/gnome-settings.ini"
     else
-        echo "DE not set to 'GNOME'. Not importing settings..."
+        echo "💢 DE not set to 'GNOME'. Not importing settings..."
     fi
 
     sudo ln -sf /var/lib/snapd/snap /snap
@@ -114,7 +120,7 @@ function setupFedora () {
         sudo rpm --install "https://downloads.1password.com/linux/rpm/stable/x86_64/1password-latest.rpm"
         sudo rpm --install "https://download.sublimetext.com/sublime-text-4152-1.x86_64.rpm"
     else
-        echo "This installer has not implemented this architecture yet ($ARCHITECTURE). Goodbye."
+        echo "💢 This installer has not implemented this architecture yet ($ARCHITECTURE). Goodbye."
         exit 1
     fi
 
@@ -148,7 +154,7 @@ function setupFedora () {
     # flatpaks
     flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
-    echo "flathub remote added!"
+    echo "✅ flathub remote added!"
 
     flatpak install flathub it.mijorus.gearlever
 
@@ -183,7 +189,7 @@ function setupMac() {
     sudo npm install -g yarn
     sudo npm install -g sass
 
-    echo "Running updates..."
+    echo "👋🏽 Running updates..."
     sudo softwareupdate -ia --verbose
     mas upgrade
 
@@ -195,8 +201,8 @@ if [[ $OS == "Linux" ]]; then
 elif [[ $OS == "Darwin" ]]; then
     setupMac
 else
-    echo "This operating system is not supported. Only Linux and macOS are supported."
+    echo "💢 This operating system is not supported. Only Linux and macOS are supported."
     exit 1
 fi
 
-echo "PLEASE RESTART YOUR SYSTEM."
+echo "👋🏽 PLEASE RESTART YOUR SYSTEM."
