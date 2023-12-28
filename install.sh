@@ -114,6 +114,8 @@ function setupFedora () {
         sudo rm -r -f 1password*
 
         # no Sublime for ARM yet
+	
+	sudo snap install armcord --channel=latest/edge
         
     elif [[ $ARCHITECTURE == "x86_64" ]]; then
         sudo rpm --install "https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-x64"
