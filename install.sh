@@ -3,7 +3,7 @@
 # install.sh
 # Carlos Valdez
 # 
-# This is my software installer for the Fedora Workstation OS.
+# This is my software installer for Fedora Linux and macOS.
 # 
 # Key:
 # ✅ - Success
