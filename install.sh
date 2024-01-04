@@ -77,6 +77,7 @@ function commonInstall() {
         code --force --install-extension  "vscjava.vscode-java-test"
         code --force --install-extension  "vscjava.vscode-maven"
         code --force --install-extension  "wmanth.jar-viewer"
+        code --force --install-extension  "njpwerner.autodocstring"
     fi
 }
 
