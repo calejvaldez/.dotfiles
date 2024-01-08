@@ -181,6 +181,7 @@ function setupMac() {
     brew install --cask nordvpn
     brew install --cask mitmproxy
     brew install --cask codewhisperer
+    brew install --cask notion
     brew install python@3.11
     brew install vim
     brew install bash
